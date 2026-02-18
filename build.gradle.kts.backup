@@ -1,0 +1,35 @@
+plugins {
+    kotlin("jvm")
+    kotlin("plugin.serialization")
+}
+
+val ktorVersion = "3.0.0"
+val coroutinesVersion = "1.8.1"
+
+dependencies {
+    api(project(":steam-utils"))
+    
+    // Ktor server for GSI
+    api("io.ktor:ktor-server-core:$ktorVersion")
+    api("io.ktor:ktor-server-cio:$ktorVersion")
+    api("io.ktor:ktor-server-content-negotiation:$ktorVersion")
+    
+    // Serialization
+    api("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+    
+    // Coroutines
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+    
+    testImplementation(kotlin("test"))
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion")
+    testImplementation("io.ktor:ktor-client-mock:$ktorVersion")
+    testImplementation("io.mockk:mockk:1.13.8")
+}
+
+kotlin {
+    jvmToolchain(21)
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
