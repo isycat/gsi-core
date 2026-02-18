@@ -1,10 +1,10 @@
 plugins {
-    kotlin("jvm") version "2.1.21"
-    kotlin("plugin.serialization") version "2.1.21"
+    kotlin("jvm")
+    kotlin("plugin.serialization")
     `maven-publish`
 }
 
-group = "com.github.isycat"
+group = "com.isycat.dotahalp"
 version = "1.0.0"
 
 val ktorVersion = "3.0.0"
@@ -13,12 +13,11 @@ val coroutinesVersion = "1.8.1"
 repositories {
     mavenCentral()
     google()
-    maven("https://jitpack.io")
 }
 
 dependencies {
-    // Use JitPack dependency for steam-utils
-    api("com.github.isycat:steam-utils:v1.0.0")
+    // For local development in composite build
+    api(project(":steam-utils"))
     
     // Ktor server for GSI
     api("io.ktor:ktor-server-core:$ktorVersion")
@@ -56,7 +55,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "com.github.isycat"
             artifactId = "gsi-core"
-            version = project.version.toString()
+            version = "1.0.0"
             
             from(components["java"])
             
@@ -83,6 +82,16 @@ publishing {
                     connection.set("scm:git:git://github.com/isycat/gsi-core.git")
                     developerConnection.set("scm:git:ssh://github.com/isycat/gsi-core.git")
                     url.set("https://github.com/isycat/gsi-core")
+                }
+                
+                withXml {
+                    // Rewrite dependency for published artifact
+                    val dependenciesNode = asNode().appendNode("dependencies")
+                    val dependencyNode = dependenciesNode.appendNode("dependency")
+                    dependencyNode.appendNode("groupId", "com.github.isycat")
+                    dependencyNode.appendNode("artifactId", "steam-utils")
+                    dependencyNode.appendNode("version", "v1.0.0")
+                    dependencyNode.appendNode("scope", "compile")
                 }
             }
         }
