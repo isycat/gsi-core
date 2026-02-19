@@ -13,11 +13,12 @@ val coroutinesVersion = "1.8.1"
 repositories {
     mavenCentral()
     google()
+    maven("https://jitpack.io")
 }
 
 dependencies {
     // For local development in composite build
-    api(project(":steam-utils"))
+    implementation("com.github.isycat:steam-utils:v1.0.0")
     
     // Ktor server for GSI
     api("io.ktor:ktor-server-core:$ktorVersion")
