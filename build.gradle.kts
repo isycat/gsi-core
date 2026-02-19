@@ -91,7 +91,7 @@ publishing {
                     val dependencyNode = dependenciesNode.appendNode("dependency")
                     dependencyNode.appendNode("groupId", "com.github.isycat")
                     dependencyNode.appendNode("artifactId", "steam-utils")
-                    dependencyNode.appendNode("version", "v1.0.0")
+                    dependencyNode.appendNode("version", "v1.0.1")
                     dependencyNode.appendNode("scope", "compile")
                 }
             }

@@ -11,5 +11,5 @@ package com.isycat.dotahalp.gsi
  * Generic GSI server abstractions will be extracted here as the codebase evolves.
  */
 object GsiModule {
-    const val VERSION = "v1.0.0"
+    const val VERSION = "v1.0.1"
 }
