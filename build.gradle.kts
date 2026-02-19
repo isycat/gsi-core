@@ -85,15 +85,6 @@ publishing {
                     url.set("https://github.com/isycat/gsi-core")
                 }
                 
-                withXml {
-                    // Rewrite dependency for published artifact
-                    val dependenciesNode = asNode().appendNode("dependencies")
-                    val dependencyNode = dependenciesNode.appendNode("dependency")
-                    dependencyNode.appendNode("groupId", "com.github.isycat")
-                    dependencyNode.appendNode("artifactId", "steam-utils")
-                    dependencyNode.appendNode("version", "v1.02")
-                    dependencyNode.appendNode("scope", "compile")
-                }
             }
         }
     }
