@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.isycat:gsi-core:v1.02")
+    implementation("com.github.isycat:gsi-core:v1.0.3")
     // GSI Core depends on steam-utils
     implementation("com.github.isycat:steam-utils:v1.0.0")
 }
@@ -43,12 +43,12 @@ dependencies {
     <dependency>
         <groupId>com.github.isycat</groupId>
         <artifactId>gsi-core</artifactId>
-        <version>v1.02</version>
+        <version>v1.0.3</version>
     </dependency>
     <dependency>
         <groupId>com.github.isycat</groupId>
         <artifactId>steam-utils</artifactId>
-        <version>v1.02</version>
+        <version>v1.0.3</version>
     </dependency>
 </dependencies>
 ```
